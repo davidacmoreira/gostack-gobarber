@@ -9,13 +9,8 @@ interface Request {
   password: string;
 }
 
-interface Response {
-  name: string;
-  email: string;
-}
-
 class CreateUserService {
-  public async execute({ name, email, password }: Request): Promise<Response> {
+  public async execute({ name, email, password }: Request): Promise<User> {
     const userRepository = getRepository(User);
 
     const checkUserExists = await userRepository.findOne({
@@ -36,10 +31,7 @@ class CreateUserService {
 
     await userRepository.save(user);
 
-    return {
-      name: user.name,
-      email: user.email,
-    };
+    return user;
   }
 }
 
