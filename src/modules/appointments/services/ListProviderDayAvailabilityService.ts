@@ -46,7 +46,7 @@ class ListProviderDayAvailabilityService {
 
     const currentDate = new Date(Date.now());
 
-    const providerAvailability = eachHourArray.map(hour => {
+    const availability = eachHourArray.map(hour => {
       const hasAppointmentHour = appointments.find(
         appointment => getHours(appointment.date) === hour,
       );
@@ -59,7 +59,7 @@ class ListProviderDayAvailabilityService {
       };
     });
 
-    return providerAvailability;
+    return availability;
   }
 }
 
